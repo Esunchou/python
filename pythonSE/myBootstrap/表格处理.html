@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--下面标签适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>周末作业分解</title>
+    <style>
+        .cover{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #919191;
+            opacity: 0.4;
+            z-index: 998;
+        }
+        .modal{
+            height: 200px;
+            width: 300px;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -150px;
+            z-index: 1000;
+        }
+
+        .hide{
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<button id="add">新增</button>
+<table class="table table-bordered table-striped table-hover table-responsive">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>姓名</th>
+    <th>爱好</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Egon</td>
+    <td>街舞</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Alex</td>
+    <td>烫头</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>苑局</td>
+    <td>日天</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div id="myCover" class="cover hide"></div>
+<div id="myModal" class="modal hide">
+  <div>
+    <p>
+      <label for="modal-name">姓名</label>
+      <input type="text" id="modal-name">
+    </p>
+    <p>
+      <label for="modal-hobby">爱好</label>
+      <input type="text" id="modal-hobby">
+    </p>
+    <p>
+      <button id="modal-submit">提交</button>
+      <button id="modal-cancel">取消</button>
+    </p>
+  </div>
+</div>
+
+
+<script src="jquery-3.3.1.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    function showModal(){
+        $("#myCover,#myModal").removeClass("hide");
+    }
+    function closeModal(){
+        $("#myModal").find("input").val("");
+        $("#myCover,#myModal").addClass("hide");
+    }
+
+    // 给新增按钮绑定事件
+    $("#add").on("click", function () {
+        // 把模态框弹出!
+        showModal();
+    });
+
+    // 模态框中的取消按钮绑定事件
+    $("#modal-cancel").on("click", function () {
+        // 1. 清空模态框中的input
+        // 2. 隐藏模态框
+        closeModal();
+    });
+
+    $("#modal-submit").on("click", function () {
+        let name = $("#modal-name").val();
+        let hobby = $("#modal-hobby").val();
+        let $myModalEle = $("#myModal");
+        let $currEle = $myModalEle.data("currEle");
+        if ($currEle !== undefined){
+            $currEle.children().eq(1).text(name);
+            $currEle.children().eq(2).text(hobby);
+            $myModalEle.removeData("currEle");
+        }
+        else{
+            let trEle = document.createElement("tr");
+            let num = $("tr").length;
+            $(trEle).html("<td>"+num+"</td>"+"<td>"+name+"</td>"+"<td>"+hobby+"</td>"+
+                 "<td>"+"<button class='edit-btn'>编辑</button>"+
+               " <button class='delete-btn'>删除</button>"+"</td>");
+            $("tbody").append(trEle);
+        }
+
+
+       closeModal();
+    });
+    let $tBody = $("tbody");
+    $tBody.on("click", ".edit-btn", function () {
+        showModal();
+        let $currEle = $(this).parent().parent();
+        let name = $currEle.children().eq(1).text();
+        let hobby = $currEle.children().eq(2).text();
+        $("#modal-name").val(name);
+        $("#modal-hobby").val(hobby);
+        $("#myModal").data("currEle", $currEle);
+    });
+
+    $tBody.on("click", ".delete-btn", function () {
+        let $delEle = $(this).parent().parent();
+        $delEle.nextAll().each(function () {
+           let oldNum = $(this).children().first().text();
+           console.log(oldNum);
+           $(this).children().first().text(oldNum - 1);
+        });
+        $delEle.remove();
+    });
+
+    // 模态框中的提交按钮绑定事件
+    // 1. 取到 用户 填写的 input框的值
+    // 2. 根据是编辑 还是新增 做不同的操作
+    // 2.1 如果是新增操作,就生成一条新的tr,加到table的最后
+    // 2.2 如果是编辑操作, 根据先前 编辑 按钮那一行
+    // 难点在于 如何确定 编辑的是哪一行?  --> 利用data()可以存具体的jQuery对象
+
+    // 给每一行的编辑按钮绑定事件
+    // 给每一行的删除按钮绑定事件
+
+
+</script>
+</body>
+</html>

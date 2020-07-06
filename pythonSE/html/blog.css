@@ -1,0 +1,103 @@
+
+/*blog示例样式*/
+
+*{
+    font-family: "Comic Sans MS", "Arial","微软雅黑";
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.left{
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    background: rgba(59, 29, 29, 0.75);
+}
+
+.right{
+    width: 80%;
+    float: right;
+    background: rgba(223, 245, 255, 0.85);
+}
+
+.img_div{
+    width: 128px;
+    height: 128px;
+    overflow: hidden;
+    border: #ff29d1 2px solid;
+    border-radius: 100%;
+    background: white;
+    margin: 15px auto 0;
+}
+
+.img_div img{
+    max-width: 100%;
+}
+
+.self_info{
+    text-align: center;
+    margin: 15px;
+    border: white 2px solid;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.link_class,
+.lang_class{
+    margin: 20px auto 0;
+    padding-left: 60px;
+}
+
+ul{
+    list-style: none;
+}
+
+.link_class a,
+.lang_class a{
+    text-decoration: none;
+    color: #919191;
+    font-size: 20px;
+}
+.article_list{
+    margin-top: 15px;
+}
+.article{
+    background: #f9fffb;
+    margin-left: 20px;
+    margin-right: 5%;
+}
+
+
+.name{
+    display: inline-block;
+}
+.date{
+    float: right;
+}
+
+.article_title{
+    padding: 15px;
+    border-left: 2px solid red;
+}
+
+
+.article_info{
+    padding: 15px;
+}
+
+.article_tail{
+    padding: 15px 0;
+    margin: 15px;
+    border-top: 1px solid gray;
+}
+
+#zhou1{
+    height: 400px;
+    overflow: hidden;
+    padding: 15px;
+    display: block;
+}
+

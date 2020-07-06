@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>toggle</title>
+    <style>
+        .c1{
+            height: 300px;
+            width: 300px;
+            background: blue;
+            border-radius: 50%;
+        }
+        .c2{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="id1" class="c1"></div>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $("div.c1").click(function () {
+            $(this).toggleClass("c2")
+        })
+    </script>
+</body>
+</html>

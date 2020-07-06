@@ -1,0 +1,67 @@
+body{
+    font-family: 宋体;
+    font-size: 50px;
+}
+
+p{
+    color: aqua;
+    font-size: 26px;
+}
+
+#p1{
+    color: blue;
+}
+
+.c1{
+    color: brown;
+}
+
+/*后代选择器*/
+div p{
+    color: deeppink;
+    font-size: 40px;
+}
+
+/*儿子选择器*/
+a>p{
+    color: red;
+}
+
+/*毗邻选择器*/
+h2+h3{
+    color: chartreuse;
+}
+
+/*弟弟选择器*/
+h3~h4{
+    color: blueviolet;
+}
+
+
+/*伪类选择器*/
+a:link{
+    color: black;
+}
+a:visited{
+    color: deeppink;
+}
+a:active{
+    color: red;
+}
+a:hover{
+    color: blue;
+}
+
+/*元素选择器*/
+h4:first-letter{
+    color: red;
+    font-size: 48px;
+}
+p:before{
+    content: "**";
+}
+
+p:after{
+    content: "[?]";
+}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+
+</head>
+<body>
+    <form action="http://127.0.0.1:8000/myform/" method="post" enctype="multipart/form-data" autocomplete="off">
+        <p>
+            <!--placeholder="请输入用户名"-->
+            <label>用户名:<input name="username"  id="name" type="text" placeholder="请输入用户名"></label>
+        </p>
+        <p>密码:  <input name="password" id="pass" type="password"></p>
+        <p>性别:
+            <input name = "gender" type="radio">男
+            <input name = "gender" type="radio">女
+        </p>
+        <p>
+            <label>
+                兴趣爱好:
+                <input type="checkbox">篮球
+                <input type="checkbox">足球
+                <input type="checkbox">乒乓球
+            </label>
+        </p>
+        <p>
+            <label>
+            籍贯:
+                <select name="address" id="province" >
+                    <option value="0">未选择</option>
+                    <option value="1">北京</option>
+                    <option value="2">上海</option>
+                    <option value="3">广东</option>
+                </select>
+
+                <select id="city">
+                    <option value="">未选择</option>
+                </select>
+            </label>
+        </p>
+        <p>生日:
+            <input type="date">
+        </p>
+        <p>自我介绍:
+            <textarea name="info" id="js" cols="30" rows="10"></textarea>
+        </p>
+        <p>头像
+            <input type="file">
+        </p>
+        <p>
+            <input type="submit" value="提交">
+            <input type="reset" value="重置">
+        </p>
+    </form>
+    <script src="jquery-3.3.1.js">
+
+    </script>
+    <script>
+        $name = $("#name");
+        $name.val("周亚庆大神");
+        $name.focus(function () {
+            $(this).val("");
+        });
+        $name.blur(function () {
+            if(!$(this).val().trim())
+            {
+                $(this).val("周亚庆大神");
+            }
+        })
+    </script>
+    <!--<script src="register.js"></script>-->
+
+</body>
+</html>
