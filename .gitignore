@@ -1,5 +1,5 @@
-.idea/
 db.sqlite3
 /**/*.pyc
 /**/migrations/
 /**/.git/
+/**/.idea/
